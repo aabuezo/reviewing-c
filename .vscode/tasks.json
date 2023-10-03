@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: gcc",
+			"command": "gcc",
+			"args":[
+				"-g",
+				"-std=c11",
+				"-Wall",
+				"${file}",
+				"-o",
+				"${fileDirname}/build/${fileBasenameNoExtension}",
+				"-lm"
+			],
+			"options":{
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/lib/gcc"
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "errno.h": "c",
+        "features.h": "c",
+        "error_t.h": "c"
+    }
+}
