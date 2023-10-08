@@ -69,6 +69,11 @@ int main()
         .active = true,
     };
 
+    /* Pointer to a structure */
+    Guy *pGuy = &bill;
+    printf("%s\n", pGuy->name);     // Arrow operator
+    printf("%s\n", (*pGuy).name);   
+
     Motorcycle moto = {
         .model = "honda",
         .speed = 100,
@@ -98,15 +103,37 @@ int main()
     }
 
     printf("The distance between %s and %s is: %.1f\n",
-           elon.name, bill.name, calc_distance(elon.dimensions, elon.pos, bill.pos));
+            elon.name, bill.name, calc_distance(elon.dimensions, elon.pos, bill.pos));
 
     printf("And a %s motorcycle is running at %.1f km/h and is driven by %s\n",
-           moto.model, moto.speed, moto.owner.name);
+            moto.model, moto.speed, moto.owner.name);
 
     moto = (Motorcycle){.model = "Ducati", .speed = 200};
 
     printf("And a %s motorcycle is running at %.1f km/h and is driven by %s\n",
-           moto.model, moto.speed, moto.owner.name);
+            moto.model, moto.speed, moto.owner.name);
+
+
+    /* Walking a single linked list */
+    Guy *firstGuy = &bill;
+    firstGuy->friend = malloc(sizeof(Guy));
+    firstGuy->friend->name = "Elon Musk";
+    firstGuy->friend->active = false;
+
+    /* Go through the list... */
+    firstGuy->friend->friend = malloc(sizeof(Guy));
+    firstGuy->friend->friend->name = "Andrea";
+
+    /* Allocating an array of guys */
+    int num = 10;
+    Guy *manyGuys = malloc(10 * sizeof(Guy));   // Ten element array of Guys
+
+    manyGuys[0].name = "Mario";
+    manyGuys[0].friend = &bill;
+
+    /* Accessing the 2nd element of manyGuys using pointers */
+    (manyGuys + 1)->name = "Tom";
+    printf("manyGuys[1].name = %s\n", manyGuys[1].name);
 
     return EXIT_SUCCESS;
 }
